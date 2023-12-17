@@ -1,13 +1,33 @@
 <section class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h3>เกี่ยวกับเรา {{title}}</h3>
-            <p>
+            <h3 [ngStyle]="{color: 'red', backgroundColor: myColor}">เกี่ยวกับเรา {{title}}</h3>
+
+            <ul>
+                <li *ngFor="let u of users">
+                    {{u}}
+                </li>
+            </ul>
+
+            <p [ngClass]="{title: isActive}">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat temporibus ea nihil odit eum omnis
                 placeat est. Placeat architecto quidem minima ipsam repellat facilis eveniet natus a dolores esse. Illo.
             </p>
 
-            <img [src]="logo" [width]="logoWidth"><br><br>
+            <table class="table table-bordered">
+                <tr>
+                    <th>ลำดับ</th>
+                    <th>ชื่อคอห์ส</th>
+                    <th>ราคา</th>
+                </tr>
+                <tr *ngFor="let c of courses; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.price}}</td>
+                </tr>
+            </table>
+
+            <img *ngIf="isShow" [src]="logo" [width]="logoWidth"><br><br>
             <button class="btn btn-primary" (click)="go()">Click me!</button>
         </div>
     </div>
