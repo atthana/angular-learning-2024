@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -19,9 +20,10 @@ export class AboutComponent implements OnInit {
   myColor = 'yellow';
   isActive = false;
 
-  constructor() { }
+  constructor(private titleBar: Title) { }
 
   ngOnInit(): void {
+    this.titleBar.setTitle('About me');
   }
 
   go(){
