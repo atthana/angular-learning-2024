@@ -1,1 +1,26 @@
-<p>products works!</p>
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Items</th>
+                    <th scope="col">Courses</th>
+                    <th scope="col">Dates</th>
+                    <th scope="col">Number of Audients</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of products">
+                    <th scope="row">{{ product.id }}</th>
+                    <td>{{ product.c_detail }}</td>
+                    <td>{{ product.c_date }}</td>
+                    <td>{{ product.c_view | number }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</section>
