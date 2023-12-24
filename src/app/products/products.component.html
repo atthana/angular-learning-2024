@@ -9,6 +9,7 @@
                     <th scope="col">Courses</th>
                     <th scope="col">Dates</th>
                     <th scope="col">Number of Audients</th>
+                    <th scope="col">Tools</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -17,6 +18,11 @@
                     <td>{{ product.c_detail }}</td>
                     <td>{{ product.c_date }}</td>
                     <td>{{ product.c_view | number }}</td>
+                    <td>
+                        <a [routerLink]="['/product', product.id]">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
