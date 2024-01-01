@@ -1,1 +1,28 @@
-<p>news works!</p>
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <h1>ข่าวสาร {{ totalResult }} ข่าว</h1>
+            <hr>
+
+            <div class="card" style="width: 18rem;" *ngFor="let article of articles">
+                <img *ngIf="article.urlToImage" class="card-img-top" [src]="article.urlToImage" [alt]="article.title">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.description }}</p>
+                    <p class="card-text float-md-left">
+                        <small class="text-muted">
+                            {{ article.source.name }}
+                        </small>
+                    </p>
+                    <p class="card-text float-md-right">
+                        <small class="text-muted">
+                            {{ article.publishedAt }}
+                        </small>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
