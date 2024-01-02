@@ -4,6 +4,7 @@
 
             <h1>ข่าวสาร {{ totalResult }} ข่าว</h1>
             <hr>
+            <img *ngIf="isLoading" src="./assets/images/loading2.gif" width="100">
 
             <div class="card" style="width: 18rem;" *ngFor="let article of articles">
                 <img *ngIf="article.urlToImage" class="card-img-top" [src]="article.urlToImage" [alt]="article.title">
