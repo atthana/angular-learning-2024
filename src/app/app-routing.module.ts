@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent},
   { path: 'product/:id/:title', component: ProductDetailComponent},
   { path: 'news', component: NewsComponent},
-  { path: '**', component: PagenotfoundComponent},
+  // { path: 'xx', loadChildren: './dashboard/dashboard.module#DashboardModule'},
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
+  { path: '**', component: PagenotfoundComponent},  // อันนี้ต้องไว้ล่างสุดเสมอนะ
 ];
 
 @NgModule({
