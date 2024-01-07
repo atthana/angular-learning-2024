@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
@@ -19,7 +19,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
+  // imports: [RouterModule.forRoot(routes, {useHash: true})],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
+  imports: [RouterModule.forRoot(routes, {useHash: true, preloadingStrategy: PreloadAllModules})],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
