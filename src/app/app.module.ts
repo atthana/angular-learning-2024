@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { NewsComponent } from './news/news.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AdtobePipe } from './adtobe.pipe';
+import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
