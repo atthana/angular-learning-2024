@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
+import { addListener } from 'process';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +18,7 @@ export class RegisterComponent implements OnInit {
     ]
   }
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +26,16 @@ export class RegisterComponent implements OnInit {
   register(formValues: any) {
     console.log(formValues);
 
+    this.authService.resister(formValues).subscribe(
+      (feedback) => {
+        if (feedback.status === 'ok') {
+          alert(feedback.message);
+          this.router.navigate(['/']);  // หน้าแรกก็คือ '/' นะ
+        } else {
+          alert(feedback.message);
+        }
+      }
+    );
   }
 
 }
