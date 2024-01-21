@@ -5,12 +5,15 @@
             <form #myForm="ngForm" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">จังหวัด</label>
+
+
                     <select #province="ngModel" ngModel name="province" class="form-control"
                         id="exampleFormControlSelect1" required>
                         <option value="">--กรุณาเลือกจังหวัด--</option>
-                        <option>อุบล</option>
-                        <option>กรุงเทพ</option>
+                        <option *ngFor="let p of users.province" [value]="p.id">{{p.name}}</option>
                     </select>
+
+
 
                     <div class="alert alert-danger" *ngIf="province.invalid && (province.dirty || province.touched)">
                         <span>กรุณาเลือกจังหวัด</span>

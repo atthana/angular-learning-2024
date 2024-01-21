@@ -7,14 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  users = {
+    province: [
+      { id: 1, name: 'อุบลราชธานี' },
+      { id: 2, name: 'กรุงเทพฯ' },
+      { id: 3, name: 'ภูเก็ต' },
+    ]
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  register(formValues: any){
+  register(formValues: any) {
     console.log(formValues);
-    
+
   }
 
 }
