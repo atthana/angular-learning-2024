@@ -1,4 +1,4 @@
-<form (ngSubmit)="login()" [formGroup]="loginForm" class="form-inline mt-2 mt-md-0">
+<form *ngIf="!isLogin" (ngSubmit)="login()" [formGroup]="loginForm" class="form-inline mt-2 mt-md-0">
     <input formControlName="email" class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email" />
     <input formControlName="password" class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password" />
     <button [disabled]="loginForm.invalid" class="btn btn-outline-success my-2 my-sm-0" type="submit">

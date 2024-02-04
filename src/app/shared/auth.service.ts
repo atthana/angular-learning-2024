@@ -31,4 +31,14 @@ export class AuthService {
     return this.http.post<any>(this.loginUrl, body, { headers: myheaders });
   }
 
+  isLogin(): boolean {
+    let token = localStorage.getItem('token');  // มันมีโอกาสเป็น null ได้นะ
+    if (token) {
+      token = JSON.parse(token);  // เราจะแปลงจาก string ให้เป็น json object นะ (เหมือนกับ loads ใน Python ที่เป็น python object)
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
