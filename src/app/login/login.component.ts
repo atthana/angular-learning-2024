@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validator, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { ɵNullViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   token = null;
   profile: any;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     if (this.authService.isLogin()) {
       this.isLogin = true;
       this.profile = JSON.parse(localStorage.getItem('profile')!);
@@ -55,5 +56,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.isLogin = false;
+    this.router.navigate(['/']);
+    this.loginForm.reset();
   }
 }
