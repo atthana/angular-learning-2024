@@ -39,6 +39,10 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
 
+  logout() {
+    this.authService.logout();
+    this.isLogin = false;
   }
 }
