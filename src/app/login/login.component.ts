@@ -16,10 +16,12 @@ export class LoginComponent implements OnInit {
   })
   isLogin = false;
   token = null;
+  profile: any;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     if (this.authService.isLogin()) {
       this.isLogin = true;
+      this.profile = JSON.parse(localStorage.getItem('profile')!);
     }
   }
 
@@ -36,6 +38,15 @@ export class LoginComponent implements OnInit {
           this.isLogin = true;
           alert('เข้าสู่ระบบเรียบร้อย');
           localStorage.setItem('token', JSON.stringify(token));  // stringify เอาไว้แปลง ts to json นะ
+
+          this.authService.getProfile().subscribe(
+            (profile) => {
+              if (profile) {
+                localStorage.setItem('profile', JSON.stringify(profile));
+                this.profile = JSON.parse(localStorage.getItem('profile')!);
+              }
+            }
+          );
         }
       }
     );

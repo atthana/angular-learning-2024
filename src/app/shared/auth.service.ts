@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   registerUrl = 'https://codingthailand.com/api/insert_user5.php';
-  loginUrl = 'https://dev-fronc7em2fyl0yna.us.auth0.com/oauth/token'
+  loginUrl = 'https://dev-fronc7em2fyl0yna.us.auth0.com/oauth/token';
+  profileUrl = 'https://dev-fronc7em2fyl0yna.us.auth0.com/userinfo';
 
 
   constructor(private http: HttpClient) { }
@@ -43,6 +44,15 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('profile');
+  }
+
+  getProfile(): Observable<any> {
+    const token = JSON.parse(localStorage.getItem('token')!);
+    const myheaders = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+    return this.http.get<any>(this.profileUrl, { headers: myheaders });
   }
 
 }
