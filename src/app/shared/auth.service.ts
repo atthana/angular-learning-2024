@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import {catchError, retry} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,14 @@ export class AuthService {
       'scope': 'openid',  // จะดึงข้อมูลในรูปแบบไหน
       'client_id': 'S2iGBqR4FgclpLjquWetOWsiESXVeSfm'
     };
-    return this.http.post<any>(this.loginUrl, body, { headers: myheaders });
+    return this.http.post<any>(this.loginUrl, body, { headers: myheaders }).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    return throwError(error);  // เวลาที่ throw error ออกไป มันจะไปเข้า funciton ที่ 2 ของ subscribe นะ
   }
 
   isLogin(): boolean {

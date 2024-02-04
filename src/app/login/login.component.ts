@@ -3,6 +3,7 @@ import { FormBuilder, Validator, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { ɵNullViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
+import { error } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   isLogin = false;
   token = null;
   profile: any;
+  errorMessage: any;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     if (this.authService.isLogin()) {
@@ -49,6 +51,10 @@ export class LoginComponent implements OnInit {
             }
           );
         }
+      },
+      (error) => {
+        // alert(error.error.error_description);
+        this.errorMessage = error.error.error_description;
       }
     );
   }

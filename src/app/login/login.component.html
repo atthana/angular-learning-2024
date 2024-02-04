@@ -1,3 +1,7 @@
+<span *ngIf="errorMessage" class="navbar-text mr-3 text-danger">
+    {{ errorMessage }}
+</span>
+
 <form *ngIf="!isLogin" (ngSubmit)="login()" [formGroup]="loginForm" class="form-inline mt-2 mt-md-0">
     <input formControlName="email" class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email" />
     <input formControlName="password" class="form-control mr-sm-2" type="password" placeholder="Password"
@@ -7,7 +11,8 @@
     </button>
 </form>
 
-<img *ngIf="isLogin && profile?.picture" [src]="profile?.picture" width="40" height="40" class="d-inline-block align-top mr-3" alt="">
+<img *ngIf="isLogin && profile?.picture" [src]="profile?.picture" width="40" height="40"
+    class="d-inline-block align-top mr-3" alt="">
 
 <span *ngIf="isLogin" class="navbar-text mr-3">
     ยินดีต้อนรับคุณ {{profile?.nickname}}
