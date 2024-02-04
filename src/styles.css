@@ -16,3 +16,7 @@ body {
         font-size: 3.5rem;
     }
 }
+
+.bg-custom-green {
+    background-color: #4CAF50; /* This is a green shade, adjust the hex value to the green you want */
+}
