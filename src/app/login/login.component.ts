@@ -3,7 +3,6 @@ import { FormBuilder, Validator, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { ɵNullViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
-import { error } from 'console';
 
 @Component({
   selector: 'app-login',
