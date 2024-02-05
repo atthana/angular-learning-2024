@@ -15,6 +15,7 @@ import { AdtobePipe } from './adtobe.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { SecureComponent } from './secure/secure.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     PagenotfoundComponent,
     AdtobePipe,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    SecureComponent
   ],
   imports: [
     BrowserModule,

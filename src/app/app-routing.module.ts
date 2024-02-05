@@ -8,22 +8,24 @@ import { NewsComponent } from './news/news.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './shared/auth.guard';
+import { SecureComponent } from './secure/secure.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'products', component: ProductsComponent},
-  { path: 'product/:id/:title', component: ProductDetailComponent},
-  { path: 'news', component: NewsComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'product/:id/:title', component: ProductDetailComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'secure', component: SecureComponent },
   // { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},  // อันนี้คือ แบบเก่านะ
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard]},  // https://angular.io/guide/lazy-loading-ngmodules#lazy-loading-basics
-  { path: '**', component: PagenotfoundComponent},  // อันนี้ต้องไว้ล่างสุดเสมอนะ
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },  // https://angular.io/guide/lazy-loading-ngmodules#lazy-loading-basics
+  { path: '**', component: PagenotfoundComponent },  // อันนี้ต้องไว้ล่างสุดเสมอนะ
 ];
 
 @NgModule({
   // imports: [RouterModule.forRoot(routes, {useHash: true})],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
-  imports: [RouterModule.forRoot(routes, {useHash: true, preloadingStrategy: PreloadAllModules})],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
+  imports: [RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules })],  // Angular แบบใหม่ ไม่ต้องใช้ useHash แล้ว
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
